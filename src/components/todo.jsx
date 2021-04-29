@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ToDoComponent from './todocomponent';
 
 class Todo extends Component {
     state = { 
@@ -29,9 +28,10 @@ class Todo extends Component {
     }
 
     addTodo = () => {
-        var copy = this.state.todoArray;
-        copy.push(this.state.todoText); // not recommended, might also clear the input field for our next todo
-        this.setState({todoArray: copy, todoText: ""})
+        // var copy = this.state.todoArray;
+        // copy.push(this.state.todoText); // not recommended, might also clear the input field for our next todo
+        // this.setState({todoArray: copy, todoText: ""})
+        return newTodoArray = [...this.state.todoArray, this.state.todoText]
 
         // this.state.todoArray.push(this.state.todoText);
         // console.log(this.state.todoArray);
