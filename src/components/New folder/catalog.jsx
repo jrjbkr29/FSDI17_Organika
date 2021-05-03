@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Product from "./product";
 import ProductService from '../services/productService';
-import "./catalog.css";
 
 class Catalog extends Component {
     state = {
@@ -16,17 +15,25 @@ class Catalog extends Component {
             itemsToDisplay = itemsToDisplay.filter( prod => { if(prod.category === this.state.selectedCategory){ return true; } return false });
         }
 
+        // option A itemsToDisplay = itemsToDisplay.filter( prod => prod.category === this.state.selectedCategory ); // option B 
+
+
         return (
             <div className="catalog-page">
                 <h1>Our Catalog</h1>
 
                 <p>The are {this.state.catalog.length} products in the catalog.</p>
 
-                <div className="cat-buttons">
-                    <button onClick={this.clearFilter} className="btn btn-sm btn-info btn-category">See All</button>
+                <div>
+                    <button 
+                    onClick={this.clearFilter} 
+                    className="btn btn-sm btn-info btn-category">
+                        See All
+                    </button>
 
                     {this.state.categories.map( (c, index) => 
-                    <button key={index} 
+                    <button 
+                    key={index} 
                     onClick={() => { this.categorySelected(c) }}
                     className="btn btn-sm btn-info">{c}
                     </button>)} 
@@ -52,10 +59,10 @@ class Catalog extends Component {
     }
 
     //catch the click event for the button and console log the category that the user clicked
-    async componentDidMount() {
+    componentDidMount() {
         // get data from the service
         var service = new ProductService();
-        var catalog = await service.getCatalog();
+        var catalog = service.getCatalog();
 
         // get unique categories 
         var cats = [];

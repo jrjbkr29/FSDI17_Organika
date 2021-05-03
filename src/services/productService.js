@@ -1,3 +1,5 @@
+import axios from "axios";
+
 var data = [
     {
       id: "5f40a6baac77a903d8f682c6",
@@ -75,22 +77,22 @@ var data = [
   ];
 
 class ProductService {
-getCatalog() {
+  serverUrl = 'http://fsdi.azurewebsites.net/api';
+
+async getCatalog() {
 // todo: logic to connect to server and retrieve the catalog
-return data;
+// JS fetch
+// $.ajax()
+// axios
+
+// use local data in case server is not working
+// return data;
+
+var res = await axios.get(this.serverUrl + "/products");
+return res.data;
+
 
 }
-
-// getCategories() {
-//   // connect to server and retrieve the catalog of products
-//   var categories = [];
-//   for (var i=0; i< data.length; i++) {
-//     categories.push(data[i].category);
-//   }
-//   var set = new Set(categories);
-//   var categories = Array.from(set);
-//   return categories;
-// }
 
 // demo method
 getProductPrice(id) {

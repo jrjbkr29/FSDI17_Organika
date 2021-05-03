@@ -1,0 +1,13 @@
+.list-item {
+    display: flex;
+    border: 1px solid black;
+    justify-content: flex-start;
+    align-items:center;
+    list-style: none;
+}
+
+.delete-btn {
+    width: auto;
+    margin-left: 10px;
+    align-self: flex-end;
+}
