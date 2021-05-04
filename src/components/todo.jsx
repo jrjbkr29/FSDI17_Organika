@@ -22,12 +22,12 @@ class Todo extends Component {
                 </div>
                 <div className="toDoList">
                     {this.props.todoItems.map((t, index) => (
-                    <div key={index}>
-                    <li className="list-item">{t}
-                    <button 
-                    onClick={() => { this.removeTodo(index) }}
-                        className="delete-btn btn btn-info btn-sm">Remove</button></li>
-                    </div>
+                        <div key={index}>
+                            <li className="list-item">{t}
+                                <button
+                                    onClick={() => { this.removeTodo(index) }}
+                                    className="delete-btn btn btn-info btn-sm">Remove</button></li>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -51,7 +51,7 @@ class Todo extends Component {
 
     removeTodoByText = (todoText) => {
         var copy = [...this.state.todoList.filter(e => e !== todoText)];
-        this.setState({todoList: copy});
+        this.setState({ todoList: copy });
     }
 
     removeTodo = (index) => {
@@ -67,4 +67,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {addTodo})(Todo);
+export default connect(mapStateToProps, { addTodo })(Todo);
