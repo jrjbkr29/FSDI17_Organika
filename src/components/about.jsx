@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import "./about.css";
 
 class About extends Component {
-    state = {  }
+    state = { 
+        email: "Show"
+     }
     render() { 
         return ( 
             <div>
-                <h2>Please send an email and we can chat about any project you have in mind</h2>
-                <button onClick={this.showContactInfo} className="btn btn-info btn-primary">Show email</button>
+                <h2>About us</h2>
+                
+                <h3>Please email us at <button onClick={this.showContactInfo} className="btn-contact btn btn-info btn-primary">{this.state.email}</button> with any issues, comments, or complaints.</h3>
             </div>
          );
     }
 
-    showContactInfo() {
+    showContactInfo = () => {
         console.log("Show email");
+        this.setState({email: "email@etc.com"})
     }
 
 }

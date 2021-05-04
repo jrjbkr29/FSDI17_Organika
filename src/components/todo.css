@@ -1,13 +1,16 @@
 .list-item {
     display: flex;
     border: 1px solid black;
-    justify-content: flex-start;
+    border-radius: 3px 3px;
+    justify-content: space-between;
     align-items:center;
     list-style: none;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: 5px;
 }
 
 .delete-btn {
     width: auto;
-    margin-left: 10px;
-    align-self: flex-end;
+    margin-top: 10px;
 }

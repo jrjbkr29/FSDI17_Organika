@@ -12,7 +12,8 @@ class Todo extends Component {
         return (
             <div>
                 <div>
-                    <h6>This is the Todo section</h6>
+                    <h3>Pending To-Dos</h3>
+                    <h6>You have: {this.state.todoArray.length} pending To-Dos</h6>
                     <input
                         value={this.state.todoText}
                         onChange={this.onTextChange}
@@ -20,8 +21,14 @@ class Todo extends Component {
                     <button onClick={this.addTodoClicked}>Add</button>
                 </div>
                 <div className="toDoList">
-                    {this.state.todoArray.map((item, index) => <li className="list-item" key={index}>{item}<button onClick={() => { this.removeTodo(index) }}
-                        className="delete-btn btn btn-info btn-sm">Remove</button></li>)}
+                    {this.state.todoArray.map((item, index) => (
+                    <div key={index}>
+                    <li className="list-item">{item}
+                    <button 
+                    onClick={() => { this.removeTodo(index) }}
+                        className="delete-btn btn btn-info btn-sm">Remove</button></li>
+                    </div>
+                    ))}
                 </div>
             </div>
         );
@@ -41,24 +48,17 @@ class Todo extends Component {
         this.setState({ todoText: "" });
         console.log("New todo added");
 
-        
-
     }
 
-    // remove todo by text
-    // removeTodo = () => {
-    //     var copy = [...this.state.todoArray.filter(e => e !== todoText)];
-    //     this.setState({todoArray: copy});
-
-
-    // }
+    removeTodoByText = (todoText) => {
+        var copy = [...this.state.todoArray.filter(e => e !== todoText)];
+        this.setState({todoList: copy});
+    }
 
     removeTodo = (index) => {
         var copy = [...this.state.todoArray];
         copy = copy.splice(index, 1);
         this.setState({ todoArray: copy });
-
-
     }
 
 }
