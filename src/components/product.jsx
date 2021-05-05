@@ -5,7 +5,7 @@ import "./product.css"
 class Product extends Component {
   state = {
     price: this.props.data.price,
-    quantity: 1
+    quantity: 1,
   };
   render() {
 

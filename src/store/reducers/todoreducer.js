@@ -5,15 +5,24 @@
  */
 
 const todoReducer = (state = [], action) => {
+    switch (action.type) {
+        case "TODO_ADD":
+            var copy = [...state];
+            copy.push(action.payload);
+            return copy; // return a new state
 
-if(action.type === "TODO_ADD") {
-    var copy = [...state];
-    copy.push(action.payload);
-    return copy; // return a new state
-}
+        case "TODO_REMOVE":
+            copy = [...state];
+            copy = copy.filter((t) => t !== action.payload);
+            return copy;
 
-    // reducer should always return the state
-    return state;
+        case "CLEAR_TODOS":
+            copy = [];
+            return copy;
+
+        default:
+            return state;
+    }
 };
 
 export default todoReducer;

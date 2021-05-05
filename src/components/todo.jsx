@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addTodo } from "../store/actions";
+import { addTodo, removeTodo } from "../store/actions";
 import "./todo.css";
 
 class Todo extends Component {
@@ -18,15 +18,15 @@ class Todo extends Component {
                         value={this.state.todoText}
                         onChange={this.onTextChange}
                         placeholder="Todo text" type="text"></input>
-                    <button onClick={this.addTodoClicked}>Add</button>
+                    <button className="td-btn" onClick={this.addTodoClicked}>Add</button>
                 </div>
                 <div className="toDoList">
                     {this.props.todoItems.map((t, index) => (
                         <div key={index}>
                             <li className="list-item">{t}
                                 <button
-                                    onClick={() => { this.removeTodo(index) }}
-                                    className="delete-btn btn btn-info btn-sm">Remove</button></li>
+                                    onClick={() => { this.removeTodoByTextStore(t) }}
+                                    className="td-btn btn btn-info btn-sm">Remove</button></li>
                         </div>
                     ))}
                 </div>
@@ -49,22 +49,17 @@ class Todo extends Component {
 
     }
 
-    removeTodoByText = (todoText) => {
-        var copy = [...this.state.todoList.filter(e => e !== todoText)];
-        this.setState({ todoList: copy });
+    removeTodoByTextStore = (index) => {
+        this.props.removeTodo(index);
     }
 
-    removeTodo = (index) => {
-        var copy = [...this.state.todoList];
-        copy = copy.splice(index, 1);
-        this.setState({ todoList: copy });
-    }
+
 }
 
 const mapStateToProps = (state) => {
     return {
-        todoItems: state
+        todoItems: state.todo
     }
 };
 
-export default connect(mapStateToProps, { addTodo })(Todo);
+export default connect(mapStateToProps, { addTodo, removeTodo })(Todo);

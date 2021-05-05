@@ -11,3 +11,23 @@ export const addTodo = (todoText) => {
         payload: todoText
     }
 };
+
+export const removeTodo = (todoText) => {
+    return {
+        type: "TODO_REMOVE",
+        payload: todoText,
+    }
+}
+
+export const clearTodos = () => {
+    return {
+        type: "CLEAR_TODOS",
+    }
+}
+
+export const addToCart = (item) => {
+    return {
+        type: "ADD_CART",
+        payload: item,
+    }
+}

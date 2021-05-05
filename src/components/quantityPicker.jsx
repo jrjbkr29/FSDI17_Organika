@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addToCart } from "../store/actions";
 
 import "./quantityPicker.css";
 
@@ -31,7 +33,7 @@ class QuantityPicker extends Component {
         </button>
 
         {this.state.buttonLabel}
-        <button className="cartButton"><i className="fa fa-cart-plus" aria-hidden="true"></i></button>
+        <button className="cartButton" onClick={this.handleAddToCartButton}><i className="fa fa-cart-plus" aria-hidden="true"></i></button>
       </div>
     );
   }
@@ -49,6 +51,21 @@ class QuantityPicker extends Component {
       this.setState({ quantity: this.state.quantity - 1 });
     }
   };
+
+  handleAddToCartButton = () => {
+    var item = {...this.props.data};
+    item.quantity = this.state.quantity;
+    console.log(item);
+    this.props.addToCart(item);
+  };
+
+
 }
 
-export default QuantityPicker;
+const mapStateToProps = (state) => {
+  return {
+      todoItems: state.cart
+  }
+};
+
+export default connect(mapStateToProps, {addToCart})(QuantityPicker);

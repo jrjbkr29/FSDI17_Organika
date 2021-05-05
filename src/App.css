@@ -1,9 +1,18 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
   text-align: center;
   width: auto;
   resize: both;
   overflow: auto;
   margin-left: 25px;
+  margin-right: 25px;
+  height: 100vh;
+}
+
+#content {
+  height: 100vh;
 }
 
 .App-logo {
@@ -30,6 +39,13 @@
 }
 
 @media only screen and (min-device-width: 768px) {
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .products {
     display: grid;
     grid-template-columns: auto auto auto auto;

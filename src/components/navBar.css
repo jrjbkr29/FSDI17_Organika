@@ -1,0 +1,32 @@
+#main-nav {
+    display: flex;
+    flex-direction: column;
+    font-size: 34px;
+    text-align: center;
+}
+
+@media(min-device-width: 768px) {
+    #main-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: auto;
+        height: auto;
+        font-size: 18px;
+    }
+
+    #ulStyle{
+        display: flex;
+        flex-direction: row;
+    }
+
+    #ulStyle li {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #cart-btn {
+        justify-content: flex-end;
+        align-self: flex-end;
+    }
+}

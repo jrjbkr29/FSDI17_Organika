@@ -4,9 +4,9 @@ import { createStore } from 'redux';
 import App from './App';
 import './index.css';
 import { Provider } from "react-redux";
-import todoReducer from './store/reducers/todoreducer';
+import rootReducer from './store/reducers/rootReducer';
 
-const store = createStore(todoReducer,
+const store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // only dev stage
   );
 
