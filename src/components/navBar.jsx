@@ -21,10 +21,11 @@ class NavBar extends Component {
             <li className="nav-item">
               <Link className="nav-link" to="/about">About</Link>
             </li>
+            
 
           </ul>
         </div>
-          <button id="cart-btn" className="btn btn-outline-info my-2 my-sm-0" onClick={this.showCart}><i className="fa fa-shopping-cart" aria-hidden="true"></i> {this.props.cartItems.length}</button>
+          <Link to="/cart"><button id="cart-btn" className="btn btn-outline-info my-2 my-sm-0" onClick={this.showCart}><i className="fa fa-shopping-cart" aria-hidden="true"></i> {this.props.cartItems.length}</button></Link>
       </nav>
     );
   }

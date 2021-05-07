@@ -9,6 +9,7 @@ import Catalog from './components/catalog';
 import Todo from './components/todo';
 import HomePage from './components/homepage';
 import About from './components/about';
+import Cart from './components/cart';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path="/catalog" exact component={Catalog}></Route>
           <Route path="/todo" exact component={Todo}></Route>
           <Route path="/about" exact component={About}></Route>
+          <Route path="/cart" exact component={Cart}></Route>
           </div>
         </Switch>
        

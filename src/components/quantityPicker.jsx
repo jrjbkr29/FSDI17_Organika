@@ -64,7 +64,7 @@ class QuantityPicker extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      todoItems: state.cart
+      cart: state.cart
   }
 };
 
