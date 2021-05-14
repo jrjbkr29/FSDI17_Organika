@@ -18,7 +18,7 @@ class Cart extends Component {
 
                 <div className="cart-list">
                     {this.props.cart.map((prod, index) => (
-                        <ProductInCart className="item-listsss" product={prod} key={index} id={this.props.cart[index].id} img={this.props.cart[index].image}></ProductInCart>
+                        <ProductInCart className="item-listsss" product={prod} key={index} id={this.props.cart[index].id} img={"FSDI17_Organika" + this.props.cart[index].image}></ProductInCart>
                     ))}
                 </div>
 

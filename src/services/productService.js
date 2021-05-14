@@ -80,16 +80,16 @@ class ProductService {
 
   async getCatalog() {
     // use local data in case server is not working
-    // return data;
-    var res = await axios.get(this.serverUrl + "/products");
-    if(res.data.length <1 ){
-      return data;
-    }
-    else{
-      return res.data;
-    }
+    return data;
+  //   var res = await axios.get(this.serverUrl + "/products");
+  //   if(res.data.length <1 ){
+  //     return data;
+  //   }
+  //   else{
+  //     return res.data;
+  //   }
     
-  }
+   }
 
   // demo method
   getProductPrice(id) {

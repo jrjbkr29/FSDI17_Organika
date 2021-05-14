@@ -12,7 +12,7 @@ class Product extends Component {
     return (
       <div className="product">
         <label className="titleLabel">{this.props.data.title}</label>
-        <img className="productImage" src={"/Images/products/" + this.props.data.image} alt="product" />
+        <img className="productImage" src={"FSDI17_Organika/Images/products/" + this.props.data.image} alt="product" />
 
         <label>Each: ${this.props.data.price}</label>
         <QuantityPicker

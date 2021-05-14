@@ -8,7 +8,7 @@ class HomePage extends Component {
         return (
             <div>
                 <h2>Welcome to our store</h2>
-                <img src="../../home.jpg" alt="Img of store" style={{ width: "60vw" }} />
+                <img src="https://github.com/jrjbkr29/FSDI17_Organika/blob/169278d26b9225a6d16e18b4a7868d94050a8cfd/home.jpg" alt="Img of store" style={{ width: "60vw" }} />
             </div>
         );
 
