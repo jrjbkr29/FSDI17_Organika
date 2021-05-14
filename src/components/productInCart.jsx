@@ -9,7 +9,7 @@ class ProductInCart extends Component {
         return (
             <div>
                 <h6>Total: ${this.props.product.itemTotal.toFixed(2)}</h6>
-                <p><img src={this.state.img} alt="Product" /></p>
+                <p><img src={"FSDI17_Organika/" + this.state.img} alt="Product" /></p>
                 <p>{this.props.product.quantity}</p>
 
                 <button onClick={() => { this.removeFromCart(this.props.id) }} className="btn btn-sm btn-danger">Remove</button>
