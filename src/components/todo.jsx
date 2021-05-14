@@ -1,57 +1,62 @@
 import React, { Component } from 'react';
-import ToDoComponent from './todocomponent';
+import { connect } from "react-redux";
+import { addTodo, removeTodo } from "../store/actions";
+import "./todo.css";
 
 class Todo extends Component {
-    state = { 
+    state = {
         todoText: "",
-        todoArray: []
-     }
-    render() { 
-        return ( 
+        todoList: []
+    }
+    render() {
+        return (
             <div>
-                <div> 
-            <h6>This is the Todo section</h6>
-            <input 
-            value={this.state.todoText}
-            onChange={this.onTextChange} 
-            placeholder="Todo text" type="text"></input>
-            <button onClick={this.addTodo}>Add</button>
-            </div>
-            <div className="toDoList">
-                    {this.state.todoArray.map((item) => <h5 key={item.todoText} data={item}>{item}</h5>)}
+                <div>
+                    <h3>Pending To-Dos</h3>
+                    <h6>You have: {this.props.todoItems.length} pending To-Dos</h6>
+                    <input
+                        value={this.state.todoText}
+                        onChange={this.onTextChange}
+                        placeholder="Todo text" type="text"></input>
+                    <button className="td-btn" onClick={this.addTodoClicked}>Add</button>
+                </div>
+                <div className="toDoList">
+                    {this.props.todoItems.map((t, index) => (
+                        <div key={index}>
+                            <li className="list-item">{t}
+                                <button
+                                    onClick={() => { this.removeTodoByIndex(index) }}
+                                    className="td-btn btn btn-info btn-sm">Remove</button></li>
+                        </div>
+                    ))}
                 </div>
             </div>
-         );
+        );
     }
 
     onTextChange = (event) => {
-        this.setState({todoText: event.target.value});
+        this.setState({ todoText: event.target.value });
     }
 
-    addTodo = () => {
-        var copy = this.state.todoArray;
-        copy.push(this.state.todoText); // not recommended, might also clear the input field for our next todo
-        this.setState({todoArray: copy, todoText: ""})
+    addTodoClicked = () => {
+        var copy = [...this.state.todoList];
+        copy.push(this.state.todoText);
+        // dispatch action
+        this.props.addTodo(this.state.todoText);
 
-        // this.state.todoArray.push(this.state.todoText);
-        // console.log(this.state.todoArray);
-    
+        this.setState({ todoText: "" });
+        console.log("New todo added");
     }
 
+    removeTodoByIndex = (index) => {
+        this.props.removeTodo(index);
+    }
 }
- 
-export default Todo;
 
+const mapStateToProps = (state) => {
+    return {
+        todoItems: state.todo
+    }
+};
 
-
-// catch the click event
-
-// get the value from the input field value
-
-
-//create an array on the state
-// push the text to the array with click button & clear it
-// display the list of todos from the array in the render method
-//create an h5 for each todo
-//map the array into html elemts
-//
+export default connect(mapStateToProps, { addTodo, removeTodo })(Todo);

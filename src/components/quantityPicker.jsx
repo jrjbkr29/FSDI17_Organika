@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addToCart } from "../store/actions";
 
 import "./quantityPicker.css";
 
@@ -11,7 +13,7 @@ class QuantityPicker extends Component {
     return (
       <div className="qp-page">
         <div>
-        <label>Total: ${(this.state.quantity * this.props.price).toFixed(2)}</label>
+          <label>Total: ${(this.state.quantity * this.props.price).toFixed(2)}</label>
         </div>
         <button
           id="decrementButton"
@@ -31,7 +33,7 @@ class QuantityPicker extends Component {
         </button>
 
         {this.state.buttonLabel}
-        <button className="cartButton"><i className="fa fa-cart-plus" aria-hidden="true"></i></button>
+        <button className="cartButton" onClick={this.handleAddToCartButton}><i className="fa fa-cart-plus" aria-hidden="true"></i></button>
       </div>
     );
   }
@@ -39,7 +41,7 @@ class QuantityPicker extends Component {
   increase = () => {
     var newQnty = (this.state.quantity + 1);
     console.log("Increase!!");
-    this.setState({ quantity: newQnty});
+    this.setState({ quantity: newQnty });
     this.props.onValueChange(newQnty);
   };
 
@@ -49,6 +51,29 @@ class QuantityPicker extends Component {
       this.setState({ quantity: this.state.quantity - 1 });
     }
   };
+
+  handleAddToCartButton = () => {
+    var item = [...this.props.data];
+
+    for (let i = 0; i < item.length; i++) {
+      let prodId = item[i].id;
+      if (prodId === this.props.keyId) {
+        item[i].quantity = this.state.quantity;
+        console.log(item);
+        let itemTotal = parseFloat(item[i].quantity * parseFloat(item[i].price));
+        item[i].itemTotal = parseFloat(itemTotal);
+        this.props.addToCart(item[i]);
+        return
+      }
+    }
+  };
+
 }
 
-export default QuantityPicker;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+};
+
+export default connect(mapStateToProps, { addToCart })(QuantityPicker);

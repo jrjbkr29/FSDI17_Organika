@@ -39,6 +39,10 @@
     background-color: white;
 }
 
+.btn-inf.disabled, .btn-info:disabled {
+    background-color: grey;
+}
+
 @media only screen and (min-device-width: 768px) {
     .qp-page button {
         margin-right: 5px;
